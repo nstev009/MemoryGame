@@ -4,7 +4,7 @@ import './App.css'
 import logo from './assets/logo-main.png'
 import Home from './Home'
 import Instructions from './Instructions'
-import Game from './game'
+import GameSettings from './gamesettings'
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/instructions" element={<Instructions />} />
               <Route path="/about" element={<AboutUs />} />
-              <Route path="/game" element={<Game />} /> 
+              <Route path="/gamesettings" element={<GameSettings />} /> 
             </Routes>
           </main>
         </div>
