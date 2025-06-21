@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import rainforest from './assets/rainforest.webp';
-import ocean from './assets/ocean.jpg';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import desert from './assets/desert.webp';
+import ocean from './assets/ocean.jpg';
+import rainforest from './assets/rainforest.webp';
 import tundra from './assets/tundra.jpg';
 import './gamesettings.css';
 
@@ -15,6 +16,7 @@ const difficulties = ['Easy', 'Medium', 'Hard'];
 function Game() {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
+  const navigate = useNavigate();
   return (
    <div className="game-page">
       <h2>Game Settings</h2>
@@ -51,6 +53,12 @@ function Game() {
             onClick={() => {
               if (selectedTheme !== null && selectedDifficulty !== null) {
                 alert(`Starting game with ${themes[selectedTheme].label} theme and ${difficulties[selectedDifficulty]} difficulty!`);
+                navigate('/game', {
+                  state: {
+                    theme: themes[selectedTheme].label,
+                    difficulty: difficulties[selectedDifficulty],
+                  },
+                });
               }
             }} >BEGIN</button>
         </div>

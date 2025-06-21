@@ -2,9 +2,10 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import AboutUs from './AboutUs'
 import './App.css'
 import logo from './assets/logo-main.png'
+import Game from './Game'
+import GameSettings from './gamesettings'
 import Home from './Home'
 import Instructions from './Instructions'
-import GameSettings from './gamesettings'
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/instructions" element={<Instructions />} />
               <Route path="/about" element={<AboutUs />} />
-              <Route path="/gamesettings" element={<GameSettings />} /> 
+              <Route path="/gamesettings" element={<GameSettings />} />
+              <Route path="/game" element={<Game />} />
             </Routes>
           </main>
         </div>
