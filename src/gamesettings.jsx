@@ -52,7 +52,6 @@ function Game() {
             disabled={selectedTheme === null || selectedDifficulty === null}
             onClick={() => {
               if (selectedTheme !== null && selectedDifficulty !== null) {
-                alert(`Starting game with ${themes[selectedTheme].label} theme and ${difficulties[selectedDifficulty]} difficulty!`);
                 navigate('/game', {
                   state: {
                     theme: themes[selectedTheme].label,

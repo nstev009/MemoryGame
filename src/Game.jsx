@@ -137,19 +137,24 @@ function Game() {
       isSelected: true,
       img: blackSquare // Show as black when selected
     };
+
+    const updatedSelections = [...userSelections, id];
     
     setGameGrid(updatedGrid);
-    setUserSelections(prev => [...prev, id]);
-    
+    setUserSelections(updatedSelections);
+
     // Check if user has selected enough cards
-    if (userSelections.length + 1 >= blackIndices.length) {
-      setTimeout(checkResults, 500);
-    }
-  };
+    if (updatedSelections.length >= blackIndices.length) {
+    setTimeout(() => {
+      // Pass the updated selections to checkResults
+      checkResults(updatedSelections);
+    }, 500);
+  }
+};
   
-  const checkResults = () => {
+  const checkResults = (selections) => {
     // Calculate score based on correct selections
-    const correctSelections = userSelections.filter(id => blackIndices.includes(id));
+    const correctSelections = selections.filter(id => blackIndices.includes(id));
     const score = Math.round((correctSelections.length / blackIndices.length) * 100);
     
     setScore(score);
