@@ -1,0 +1,95 @@
+.game-page{
+    color:#aec5eb;
+
+}
+
+.game-settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10rem;
+    margin-left: 5rem;
+}
+
+
+.theme-image{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #fff;
+    border: 2px solid #aec5eb;
+    display: block;
+    margin: 0 auto 0.5rem auto;
+}
+
+.theme-card:hover .theme-image::after {
+    content: "";
+    background: #aec5eb;
+    pointer-events: none;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.theme-card:hover .theme-image {
+    filter: brightness(0.7); /* Optional: darken image for stronger tint */
+}
+
+.themes-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 1rem;
+    width: auto;     
+    max-width: 520px; 
+    min-width: 350px;
+    box-sizing: border-box;
+}
+
+.theme-card{
+    font-size: medium;
+    position: relative;
+    overflow: visible;
+    box-shadow: none;
+}
+
+.diff-container {
+    min-width: 180px;
+    margin-top: 1rem;
+}
+
+.difficulty-button{
+    background-color: #2b62aa;
+    color: #aec5eb;
+}
+
+.difficulty-button:hover {
+    transition: 0.5s;
+    background-color: #aec5eb;
+    color: #2b62aa;
+}
+
+
+.theme-card.selected .theme-image {
+    box-shadow: 0 0 0 4px #aec5eb;
+    filter: none;
+    background: #22405a;
+    z-index: 1;
+}
+
+.theme-label {
+    position: relative;
+    z-index: 2; /* Make sure label is above any overlay */
+    background: none; /* No background */
+    color: #aec5eb;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.difficulty-button.selected {
+    background-color: #aec5eb;
+    color: #2b62aa;
+}

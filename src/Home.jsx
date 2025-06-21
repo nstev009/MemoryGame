@@ -13,7 +13,7 @@ function Home() {
     setTimeout(() => {
       setFadingOut(true);
       setTimeout(() =>{
-      navigate('/game');
+      navigate('/gamesettings');
       }, 400);
     }, 1200); 
   };

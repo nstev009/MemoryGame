@@ -51,6 +51,7 @@
   display: flex;
   flex: 1;
   width: 100%;
+
   
 ;
 }
@@ -59,10 +60,10 @@
 .vertical-nav {
   display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 180px;
   background-color: #2b62aa;
   border-right: 1px solid #ddd;
-  height: calc(100vh - 5rem); 
+  height: 100vh;
   font-family: 'Atkinson Hyperlegible Mono';
   src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 }
