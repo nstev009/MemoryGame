@@ -1,5 +1,7 @@
 .game-page{
     color:#aec5eb;
+    font-family: 'Atkinson Hyperlegible Mono';
+  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 
 }
 
@@ -8,7 +10,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 10rem;
+    gap: 8rem;
     margin-left: 5rem;
 }
 
