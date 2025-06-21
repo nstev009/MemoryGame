@@ -1,17 +1,33 @@
 /* Instructions Component Styling */
 .instructions-container {
-  background-color: #f9f9f9;
+  background-color: #2b62aa;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 100px;
+  margin-left: auto;  
+  margin-right: auto;
+  width: fit-content;
+  font-family: 'Atkinson Hyperlegible Mono';
+  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+}
+
+h1{
+  color: #aec5eb;
+  text-align: center;
+  margin-left: auto;  
+  margin-right: auto;
+  width: fit-content;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .instructions-container section {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .instructions-container h2 {
-  color: #333;
+  color: #aec5eb;
   border-bottom: 2px solid #ddd;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
