@@ -14,7 +14,7 @@
   right: 0;
   transform: translateX(-50%); /* Shift it back to align with the viewport */
   padding: 1rem 0;   /* Remove horizontal padding */
-  height: auto;
+  height: 10vh;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
 }
@@ -63,7 +63,7 @@
   width: 180px;
   background-color: #2b62aa;
   border-right: 1px solid #ddd;
-  height: 100vh;
+  height: 90vh;
   font-family: 'Atkinson Hyperlegible Mono';
   src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 }
