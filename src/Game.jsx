@@ -267,7 +267,6 @@ return (
       <div className="game-info">
         <p><strong>Theme:</strong> {theme}</p>
         <p><strong>Difficulty:</strong> {difficulty}</p>
-        <p><strong>Grid Size:</strong> {gridSize}×{gridSize}</p>
         
         {gameState === 'preparing' && (
           <p className="status-message">Get ready...</p>

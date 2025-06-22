@@ -15,7 +15,7 @@ function AboutUs() {
         <section>
           <h2>The Team</h2>
           <p>
-            Our team of two, Aidan Lebelle and Noah Stevens, are passionate about game design and cognitive science.
+            Our team of two, Gregory House and Megatron Albus Cuddy, are passionate about game design and cognitive science.
             We believe in the power of games to enhance mental agility and provide a fun way to challenge
             yourself and others.
           </p>
@@ -25,7 +25,7 @@ function AboutUs() {
           <p>
             Have questions or feedback? Reach out to us at:
             <br />
-            <a href="mailto:nstev009@uottawa.ca">nstev009@uottawa.ca</a> or <a href="mailto:aleb091@uottawa.ca">aleb091@uottawa.ca</a>
+            <a href="mailto:support@patternpulse.com">support@patternpulse.com</a>
           </p>
         </section>
       </div>
