@@ -1,29 +1,47 @@
-.game-page{
-    color:#aec5eb;
-    font-family: 'Atkinson Hyperlegible Mono';
-  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+@import url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 
+.game-page {
+    color: #aec5eb;
+    font-family: 'Atkinson Hyperlegible Mono', monospace;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 .game-settings {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8rem;
-    margin-left: 180px;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 
 .theme-image{
-    width: 250px;
-    height: 250px;
+    width: 85%;
+    height: auto;
     object-fit: cover;
     border-radius: 12px;
     background: #fff;
     border: 2px solid #aec5eb;
     display: block;
     margin: 0 auto 0.5rem auto;
+    transition: all 0.3s ease;
+    
+}
+
+.theme-card {
+    font-size: medium;
+    position: relative;
+    overflow: show;
+    box-shadow: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Added width to ensure full width */
 }
 
 .theme-card:hover .theme-image::after {
@@ -35,35 +53,55 @@
 }
 
 .theme-card:hover .theme-image {
-    filter: brightness(0.7); /* Optional: darken image for stronger tint */
+    filter: brightness(0.7);
+    transform: scale(1.03);
 }
 
 .themes-container{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
     padding: 1rem;
-    width: auto;     
-    max-width: 520px; 
-    min-width: 350px;
+    width: 40%;
     box-sizing: border-box;
+    max-width: 350px;
 }
 
-.theme-card{
-    font-size: medium;
-    position: relative;
-    overflow: visible;
-    box-shadow: none;
-}
+
 
 .diff-container {
+    flex: 1;
     min-width: 180px;
+    width: 28%; /* Added explicit width to match theme columns */
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgba(43, 98, 170, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
 }
 
-.difficulty-button{
+.difficulty-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.difficulty-button {
     background-color: #2b62aa;
     color: #aec5eb;
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border-radius: 8px; /* Added border radius for consistency */
+    border: none; /* Added to ensure no default borders */
+    font-size: 1rem; /* Added explicit font size */
+    cursor: pointer;
 }
 
 .difficulty-button:hover {
@@ -94,4 +132,114 @@
 .difficulty-button.selected {
     background-color: #aec5eb;
     color: #2b62aa;
+}
+
+.theme-column-left,
+.theme-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 30%;
+    min-width: 150px; /* Added min-width for very small screens */
+}
+
+.start-game-btn {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background-color: #66d871;
+    color: #0f0f0f;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-game-btn:hover:not([disabled]) {
+    background-color: #66d871;
+    color: #0f0f0f;
+    transform: translateY(-2px);
+}
+
+.start-game-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+    .game-settings {
+        gap: 1rem; /* Reduced gap for medium screens */
+    }
+    
+    .theme-image {
+        aspect-ratio: 1/1; /* Square images on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .game-settings {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .theme-column-left, 
+    .theme-column-right {
+        width: 100%;
+        max-width: 500px;
+        gap: 1rem; /* Reduced gap for mobile */
+    }
+    
+    .theme-column-left {
+        margin-bottom: 1rem; /* Add space between columns */
+    }
+    
+    .diff-container {
+        align-self: center; /* Center on mobile */
+        width: 100%;
+        max-width: 500px;
+        order: -1; /* Move difficulties to the top on mobile */
+        margin-bottom: 2rem;
+    }
+    
+    .theme-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-page {
+        padding: 0.5rem;
+    }
+    
+    .theme-image {
+        height: 120px; /* Smaller height on very small screens */
+    }
+    
+    h2 {
+        font-size: 1.2rem; /* Smaller heading on mobile */
+    }
+    
+    h3 {
+        font-size: 1rem;
+    }
+    
+    .difficulty-button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .start-game-btn {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Added styles for very small screens */
+@media (max-width: 350px) {
+    .theme-image {
+        height: 100px;
+    }
+    
+    .theme-label {
+        font-size: 0.9rem;
+    }
 }

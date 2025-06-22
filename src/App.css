@@ -1,8 +1,25 @@
 @import url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 
+body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
 #root {
   max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .titleContainer {
@@ -10,16 +27,13 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  position: relative;
-  width: 100vw;      /* Make it span the viewport width */
-  left: 50%;         /* Center it relative to the viewport */
-  right: 0;
-  transform: translateX(-50%); /* Shift it back to align with the viewport */
-  padding: 1rem 0;   /* Remove horizontal padding */
-  height: 10vh;
+  width: calc(100% - 180px); /* Account for nav width */
+  margin-left: 180px; /* Match nav width */
+  padding: 1rem;
+  height: auto;
+  min-height: 10vh;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  margin-left: 180px;
 }
 
 .logo {
@@ -36,7 +50,7 @@
 .title {
   font-size: 2.5rem;
   margin-left: 1rem;
-  color:  #aec5eb;
+  color: #aec5eb;
   font-family: 'Atkinson Hyperlegible Mono', monospace;
 }
 
@@ -58,16 +72,15 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .content-container {
   display: flex;
   flex: 1;
   width: 100%;
-
-  
-;
+  position: relative; /* Added for proper positioning context */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Vertical navigation styling */
@@ -80,11 +93,10 @@
   width: 180px;
   background-color: #2b62aa;
   border-right: 1px solid #ddd;
-  min-height: 100vh;   
-  height: 100%;       
-  z-index:100;
-  font-family: 'Atkinson Hyperlegible Mono';
-  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+  min-height: 100vh;
+  height: 100%;
+  z-index: 100;
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
 }
 
 .nav-button {
@@ -95,7 +107,7 @@
   height: 33.33%;
   padding: 1rem;
   text-decoration: none;
-  color:  #aec5eb;
+  color: #aec5eb;
   font-weight: bold;
   transition: background-color 0.3s ease;
   border-bottom: 1px solid #ddd;
@@ -107,8 +119,8 @@
 
 .nav-button:hover {
   transition: 0.5s;
-    background-color: #aec5eb;
-    color: #2b62aa;
+  background-color: #aec5eb;
+  color: #2b62aa;
 }
 
 /* Main content area */
@@ -116,11 +128,11 @@
   flex: 1;
   padding: 2rem;
   overflow-y: auto;
-  
-;
+  margin-left: 180px; /* Match nav width */
+  width: calc(100% - 180px); /* Account for nav width */
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
+  max-width: 100%; /* Ensure content doesn't exceed viewport */
 }
-
-
 
 /* Animation */
 @keyframes logo-spin {
@@ -129,5 +141,61 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vertical-nav {
+    width: 100px; /* Smaller on mobile */
+  }
+  
+  .titleContainer {
+    width: calc(100% - 100px);
+    margin-left: 100px;
+  }
+  
+  .main-content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .nav-button {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vertical-nav {
+    width: 70px;
+  }
+  
+  .titleContainer {
+    width: calc(100% - 70px);
+    margin-left: 70px;
+  }
+  
+  .main-content {
+    margin-left: 70px;
+    width: calc(100% - 70px);
+    padding: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .nav-button {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+  }
+  
+  .nav-icon, .about-us-icon {
+    max-height: 24px;
   }
 }

@@ -20,9 +20,9 @@ function Game() {
   
   const getGridSize = (difficulty) => {
     switch (difficulty) {
-      case 'Easy': return 5;
-      case 'Medium': return 7;
-      case 'Hard': return 9;
+      case 'Easy (5x5)': return 5;
+      case 'Medium (7x7)': return 7;
+      case 'Hard (9x9)': return 9;
       default: return 5;
     }
   };
@@ -118,10 +118,14 @@ function Game() {
     setupGame();
     // Don't include gameGrid in dependencies to avoid infinite loops
   }, [setupGame]);
-
   // Handle card selection
   const handleCardClick = (id) => {
     if (gameState !== 'guessing') return;
+    
+    // Check if user has already selected the maximum number of cards
+    if (userSelections.length >= blackIndices.length) {
+      return; // Prevent selecting more cards than allowed
+    }
     
     // Make a copy of the current grid
     const updatedGrid = [...gameGrid];
@@ -143,14 +147,14 @@ function Game() {
     setGameGrid(updatedGrid);
     setUserSelections(updatedSelections);
 
-    // Check if user has selected enough cards
+    // Check if user has selected enough cards (immediately check)
     if (updatedSelections.length >= blackIndices.length) {
-    setTimeout(() => {
-      // Pass the updated selections to checkResults
-      checkResults(updatedSelections);
-    }, 500);
-  }
-};
+      setTimeout(() => {
+        // Pass the updated selections to checkResults
+        checkResults(updatedSelections);
+      }, 500);
+    }
+  };
   
   const checkResults = (selections) => {
   // Calculate score based on correct selections
@@ -208,82 +212,100 @@ function Game() {
 
 return (
   <div className="game-container">
-    <h2>Pattern Memory Game</h2>
-    <div className="game-info">
-      <p>Theme: {theme}</p>
-      <p>Difficulty: {difficulty}</p>
-      <p>Grid Size: {gridSize}x{gridSize}</p>
-      <p>Game State: {gameState}</p>
-      {gameState === 'showing' && <p>Memorize the pattern!</p>}
-      {gameState === 'guessing' && <p>Select the squares that were black</p>}
-      {gameState === 'finished' && <p>Your score: {score}%</p>}
-    </div>
-    
-    <div className="game-board" style={{
-      display: 'grid',
-      gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-      gap: '10px',
-      maxWidth: '800px',
-      margin: '0 auto'
-    }}>
-      {gameGrid.map((card) => (
-        <div
-          key={card.id}
-          className={`card ${card.isSelected ? 'selected' : ''}`}
-          onClick={() => handleCardClick(card.id)}
-          style={{
-            width: '100%',
-            aspectRatio: '1',
-            backgroundColor: gameState === 'finished' 
-              ? (card.isCorrect 
-                  ? 'green' 
-                  : card.isMissed 
-                    ? 'black' 
-                    : card.isWrong 
-                      ? 'white' 
-                      : '#f0f0f0')
-              : '#f0f0f0',
-            border: '1px solid #ccc',
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: gameState === 'guessing' ? 'pointer' : 'default'
-          }}
-        >
-          {gameState !== 'finished' || (!card.isCorrect && !card.isMissed && !card.isWrong) ? (
-            <img
-              src={card.img}
-              alt={card.label}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                borderRadius: '8px'
-              }}
-            />
-          ) : null}
-        </div>
-      ))}
-    </div>
-    
-    {gameState === 'finished' && (
-      <div>
-        <p>
-          <span style={{ color: 'green', fontWeight: 'bold' }}>Green:</span> Correctly selected
-          <br />
-          <span style={{ color: 'black', fontWeight: 'bold' }}>Black:</span> Missed (should have selected)
-          <br />
-          <span style={{ color: 'gray', fontWeight: 'bold' }}>White:</span> Incorrectly selected
-        </p>
-        <button 
-          onClick={() => window.location.reload()}
-          style={{ marginTop: '20px', padding: '10px 20px' }}
-        >
-          Play Again
-        </button>
+    {/* Game Board Section - Left Side */}
+    <div className="game-board-section">
+      <div className={`game-board grid-${gridSize}`}>
+        {gameGrid.map((card) => {
+          // Determine card classes based on game state
+          let cardClasses = 'card';
+          
+          if (gameState === 'guessing') {
+            cardClasses += ' guessing';
+          } else if (gameState !== 'guessing') {
+            cardClasses += ' disabled';
+          }
+          
+          if (gameState === 'finished') {
+            cardClasses += ' finished';
+            if (card.isCorrect) {
+              cardClasses += ' correct';
+            } else if (card.isMissed) {
+              cardClasses += ' missed';
+            } else if (card.isWrong) {
+              cardClasses += ' wrong';
+            } else {
+              cardClasses += ' neutral';
+            }
+          }
+          
+          if (card.isSelected) {
+            cardClasses += ' selected';
+          }
+          
+          return (
+            <div
+              key={card.id}
+              className={cardClasses}
+              onClick={() => handleCardClick(card.id)}
+            >
+              {gameState !== 'finished' || (!card.isCorrect && !card.isMissed && !card.isWrong) ? (
+                <img
+                  src={card.img}
+                  alt={card.label}
+                />
+              ) : null}
+            </div>
+          );
+        })}
       </div>
-    )}
+    </div>
+
+    {/* Game Info Section - Right Side */}
+    <div className="game-info-section">
+      <h2>Pattern Memory Game</h2>
+      
+      <div className="game-info">
+        <p><strong>Theme:</strong> {theme}</p>
+        <p><strong>Difficulty:</strong> {difficulty}</p>
+        <p><strong>Grid Size:</strong> {gridSize}×{gridSize}</p>
+        
+        {gameState === 'preparing' && (
+          <p className="status-message">Get ready...</p>
+        )}
+        {gameState === 'showing' && (
+          <p className="status-message">Memorize the pattern!</p>
+        )}
+        {gameState === 'guessing' && (
+          <p className="status-message">Select the squares that were black</p>
+        )}
+        {gameState === 'finished' && (
+          <p className="status-message">Your score: {score}%</p>
+        )}
+      </div>
+
+      {gameState === 'finished' && (
+        <div className="game-results">
+          <div className="legend">
+            <h3>Results Legend:</h3>
+            <div className="legend-item">
+              <span className="legend-correct">Green:</span> Correctly selected
+            </div>
+            <div className="legend-item">
+              <span className="legend-missed">Black:</span> Missed (should have selected)
+            </div>
+            <div className="legend-item">
+              <span className="legend-wrong">White:</span> Incorrectly selected
+            </div>
+          </div>
+          <button 
+            className="play-again-btn"
+            onClick={() => window.location.reload()}
+          >
+            Play Again
+          </button>
+        </div>
+      )}
+    </div>
   </div>
 );
 }

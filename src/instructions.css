@@ -4,22 +4,19 @@
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-left: 100px;
-  margin-left: auto;  
-  margin-right: auto;
-  width: fit-content;
-  font-family: 'Atkinson Hyperlegible Mono';
-  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
+  color: #aec5eb;
 }
 
-h1{
+h1 {
   color: #aec5eb;
   text-align: center;
-  margin-left: auto;  
-  margin-right: auto;
-  width: fit-content;
+  margin: 0 auto 1.5rem;
+  width: 100%;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
 }
 
 .instructions-container section {
@@ -41,4 +38,14 @@ h1{
 
 .instructions-container li {
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .instructions-container {
+    padding: 0.8rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
 }

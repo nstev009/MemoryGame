@@ -12,7 +12,6 @@ function Instructions() {
             <li>Pay attention to the pattern displayed on screen</li>
             <li>Memorize the sequence in the limited time provided</li>
             <li>Reproduce the pattern from memory</li>
-            <li>Each successful round increases difficulty</li>
           </ol>
         </section>
         <section>

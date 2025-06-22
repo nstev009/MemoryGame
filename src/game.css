@@ -1,3 +1,135 @@
+/* Game Container Styling */
+.game-container {
+  color: #aec5eb;
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
+  display: flex;
+  gap: 3rem;
+  min-height: 80vh;
+  align-items: flex-start;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Game Board Section */
+.game-board-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 1rem;
+}
+
+/* Game Info Section */
+.game-info-section {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgba(43, 98, 170, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-container h2 {
+  color: #aec5eb;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.game-info {
+  margin-bottom: 2rem;
+}
+
+.game-info p {
+  margin: 0.75rem 0;
+  font-size: 1.1rem;
+}
+
+.game-info .status-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #9AD4D6;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: rgba(154, 212, 214, 0.1);
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Game Board Styling */
+.game-board {
+  display: grid;
+  gap: 10px;
+  max-width: min(80vh, 700px);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.game-board.grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.game-board.grid-7 {
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.game-board.grid-9 {
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+
+/* Card Styling */
+.card {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card.guessing {
+  cursor: pointer;
+}
+
+.card.disabled {
+  cursor: default;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Card State Colors */
+.card.finished.correct {
+  background-color: green;
+}
+
+.card.finished.missed {
+  background-color: black;
+}
+
+.card.finished.wrong {
+  background-color: white;
+}
+
+.card.finished.neutral {
+  background-color: #f0f0f0;
+}
+
+/* Legacy border styles (keeping for compatibility) */
 .card.correct {
   border: 3px solid green;
 }
@@ -8,4 +140,167 @@
 
 .card.wrong {
   border: 3px solid orange;
+}
+
+/* Results Section */
+.game-results {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: rgba(154, 212, 214, 0.1);
+  border-radius: 8px;
+}
+
+.legend {
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.legend-correct {
+  color: green;
+  font-weight: bold;
+}
+
+.legend-missed {
+  color: black;
+  font-weight: bold;
+}
+
+.legend-wrong {
+  color: gray;
+  font-weight: bold;
+}
+
+.play-again-btn {
+  margin-top: 1rem;
+  padding: 12px 24px;
+  background-color: #2b62aa;
+  color: #aec5eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.play-again-btn:hover {
+  background-color: #aec5eb;
+  color: #2b62aa;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .game-container {
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .game-info-section {
+    flex: 0 0 300px;
+  }
+  
+  .game-board {
+    max-width: min(75vh, 600px);
+  }
+}
+
+@media (max-width: 768px) {
+  .game-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    align-items: center;
+  }
+  
+  .game-info-section {
+    flex: none;
+    width: 100%;
+    max-width: 600px;
+    order: -1; /* Move info section to top on mobile */
+  }
+  
+  .game-board-section {
+    width: 100%;
+    min-height: auto;
+    padding: 0.5rem;
+  }
+  
+  .game-board {
+    max-width: min(85vw, 500px);
+    gap: 8px;
+  }
+  
+  .game-board.grid-7 {
+    gap: 6px;
+  }
+  
+  .game-board.grid-9 {
+    gap: 4px;
+  }
+  
+  .game-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .game-info p {
+    font-size: 1rem;
+  }
+  
+  .game-info .status-message {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .game-board-section {
+    padding: 0.25rem;
+  }
+  
+  .game-board {
+    max-width: 95vw;
+    gap: 6px;
+  }
+  
+  .game-board.grid-7 {
+    gap: 4px;
+  }
+  
+  .game-board.grid-9 {
+    gap: 3px;
+  }
+  
+  .game-container h2 {
+    font-size: 1.3rem;
+  }
+  
+  .game-info p {
+    font-size: 0.9rem;
+  }
+  
+  .game-info .status-message {
+    font-size: 1rem;
+    padding: 0.4rem;
+  }
+  
+  .legend-item {
+    font-size: 0.9rem;
+  }
+  
+  .play-again-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }

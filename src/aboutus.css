@@ -5,6 +5,9 @@
   border-radius: 4px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
 }
 
 .about-container section {
