@@ -12,18 +12,22 @@ const themes = [
   { img: ocean, label: 'Ocean' },
   { img: tundra, label: 'Tundra' },
 ];
-const difficulties = ['Easy', 'Medium', 'Hard'];
-function Game() {
+const difficulties = ['Easy (5x5)', 'Medium (7x7)', 'Hard (9x9)'];
+
+function GameSettings() {
   const [selectedTheme, setSelectedTheme] = useState(null);
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const navigate = useNavigate();
+  
   return (
-   <div className="game-page">
+    <div className="game-page">
       <h2>Game Settings</h2>
       <h2>Choose a Theme and Difficulty</h2>
+      
       <div className='game-settings'>
-        <div className='themes-container'>
-          {themes.map((theme, idx) => (
+        {/* Left column with two themes */}
+        <div className='theme-column-left'>
+          {themes.slice(0, 2).map((theme, idx) => (
             <div
               className={`theme-card${selectedTheme === idx ? ' selected' : ''}`}
               key={idx}
@@ -34,6 +38,8 @@ function Game() {
             </div>
           ))}
         </div>
+        
+        {/* Center column with difficulties */}
         <div className='diff-container'>
           <h3>Difficulty Levels</h3>
           <div className="difficulty-options">
@@ -59,11 +65,28 @@ function Game() {
                   },
                 });
               }
-            }} >BEGIN</button>
+            }}
+          >
+            START
+          </button>
+        </div>
+        
+        {/* Right column with two themes */}
+        <div className='theme-column-right'>
+          {themes.slice(2, 4).map((theme, idx) => (
+            <div
+              className={`theme-card${selectedTheme === idx + 2 ? ' selected' : ''}`}
+              key={idx + 2}
+              onClick={() => setSelectedTheme(idx + 2)}
+            >
+              <img src={theme.img} alt={theme.label + " Theme"} className='theme-image'/>
+              <div className="theme-label">{theme.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-export default Game;
+export default GameSettings;

@@ -7,7 +7,6 @@ import InstructionsIcon from './assets/instructions.png'
 import logo from './assets/logo-main.png'
 import Game from './Game'
 import GameSettings from './gamesettings'
-import Home from './Home'
 import Instructions from './Instructions'
 
 function App() {
@@ -34,7 +33,7 @@ function App() {
           
           <main className="main-content">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<GameSettings />} />
               <Route path="/instructions" element={<Instructions />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/gamesettings" element={<GameSettings />} />

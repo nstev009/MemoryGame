@@ -212,7 +212,6 @@ return (
     <div className="game-info">
       <p>Theme: {theme}</p>
       <p>Difficulty: {difficulty}</p>
-      <p>Grid Size: {gridSize}x{gridSize}</p>
       <p>Game State: {gameState}</p>
       {gameState === 'showing' && <p>Memorize the pattern!</p>}
       {gameState === 'guessing' && <p>Select the squares that were black</p>}
