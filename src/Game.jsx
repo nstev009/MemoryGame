@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'; // Add useCallback
 import { useLocation } from 'react-router-dom';
-import './Game.css';
 import blackSquare from './assets/black.png';
 import desert from './assets/desert.webp';
 import ocean from './assets/ocean.jpg';
 import rainforest from './assets/rainforest.webp';
 import tundra from './assets/tundra.jpg';
+import './game.css';
 
 function Game() {
   const location = useLocation();
