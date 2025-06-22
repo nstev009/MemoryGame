@@ -1,3 +1,5 @@
+@import url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+
 #root {
   max-width: 100%;
   text-align: center;
@@ -34,8 +36,19 @@
   font-size: 2.5rem;
   margin-left: 1rem;
   color:  #aec5eb;
-  font-family: 'Atkinson Hyperlegible Mono';
-  src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
+}
+
+.nav-icon {
+  margin-top: 0.5rem;
+  max-height: 5vh;
+  max-width: auto;
+}
+
+.about-us-icon {
+  max-height: 7.5vh;
+  max-width: auto;
+  margin-top: 0.5rem;
 }
 
 /* App container layout */
@@ -70,6 +83,7 @@
 
 .nav-button {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 33.33%;

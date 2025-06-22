@@ -1,0 +1,11 @@
+.card.correct {
+  border: 3px solid green;
+}
+
+.card.missed {
+  border: 3px solid red;
+}
+
+.card.wrong {
+  border: 3px solid orange;
+}
