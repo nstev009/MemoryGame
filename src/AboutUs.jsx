@@ -15,8 +15,9 @@ function AboutUs() {
         <section>
           <h2>The Team</h2>
           <p>
-            Our team of developers and designers are passionate about creating 
-            educational games that are both fun and beneficial for cognitive development.
+            Our team of two, Aidan Lebelle and Noah Stevens, are passionate about game design and cognitive science.
+            We believe in the power of games to enhance mental agility and provide a fun way to challenge
+            yourself and others.
           </p>
         </section>
         <section>
@@ -24,7 +25,7 @@ function AboutUs() {
           <p>
             Have questions or feedback? Reach out to us at:
             <br />
-            <a href="mailto:contact@patternpulse.com">contact@patternpulse.com</a>
+            <a href="mailto:nstev009@uottawa.ca">nstev009@uottawa.ca</a> or <a href="mailto:aleb091@uottawa.ca">aleb091@uottawa.ca</a>
           </p>
         </section>
       </div>
