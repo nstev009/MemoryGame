@@ -36,6 +36,7 @@ h1{
 .instructions-container ol,
 .instructions-container ul {
   padding-left: 1.5rem;
+  list-style: none;
 }
 
 .instructions-container li {

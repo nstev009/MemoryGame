@@ -19,6 +19,7 @@
   height: 10vh;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
+  margin-left: 180px;
 }
 
 .logo {
@@ -71,12 +72,17 @@
 
 /* Vertical navigation styling */
 .vertical-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   width: 180px;
   background-color: #2b62aa;
   border-right: 1px solid #ddd;
-  height: 90vh;
+  min-height: 100vh;   
+  height: 100%;       
+  z-index:100;
   font-family: 'Atkinson Hyperlegible Mono';
   src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 }
@@ -114,12 +120,7 @@
 ;
 }
 
-/* Page content styling */
-.page-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
+
 
 /* Animation */
 @keyframes logo-spin {

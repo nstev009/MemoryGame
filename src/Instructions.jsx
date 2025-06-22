@@ -21,12 +21,7 @@ function Instructions() {
         </section>
         <section>
           <h2>Scoring</h2>
-          <p>Points are awarded based on:</p>
-          <ul>
-            <li>Accuracy of pattern reproduction</li>
-            <li>Speed of completion</li>
-            <li>Difficulty level</li>
-          </ul>
+          <p>A percent is given based on the amount of correct squares. For example, if you missed one square out of 5, you would get 80%.</p>
         </section>
       </div>
     </div>

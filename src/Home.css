@@ -1,6 +1,12 @@
 .page-content {
+    margin-left: 180px;
     color: #aec5eb;
+    display:flex;
+    text-align: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 50vh;
     font-family: 'Atkinson Hyperlegible Mono';
   src: url('https://fonts.google.com/specimen/Atkinson+Hyperlegible+Mono?preview.text=Pattern%20Pulse&lang=en_Latn&categoryFilters=Feeling:%2FExpressive%2FBusiness;Appearance:%2FMonospace%2FMonospace');
 }
@@ -27,7 +33,7 @@
     color: #2b62aa;
 }
 .game-preview {
-    text-align: left;
+    text-align: center;
 }
 
 .logo-expand-overlay {
