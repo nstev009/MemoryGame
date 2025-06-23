@@ -113,11 +113,24 @@ function Game() {
     setGameGrid(newGrid);
     setGameState('guessing');
   }, [theme]);
-
   useEffect(() => {
     setupGame();
     // Don't include gameGrid in dependencies to avoid infinite loops
   }, [setupGame]);
+
+  // Reset game function
+  const resetGame = () => {
+    setGameState('preparing');
+    setGameGrid([]);
+    setUserSelections([]);
+    setScore(0);
+    setBlackIndices([]);
+    // Trigger a new game setup
+    setTimeout(() => {
+      setupGame();
+    }, 100);
+  };
+
   // Handle card selection
   const handleCardClick = (id) => {
     if (gameState !== 'guessing') return;
@@ -295,10 +308,9 @@ return (
             <div className="legend-item">
               <span className="legend-wrong">White:</span> Incorrectly selected
             </div>
-          </div>
-          <button 
+          </div>          <button 
             className="play-again-btn"
-            onClick={() => window.location.reload()}
+            onClick={resetGame}
           >
             Play Again
           </button>
