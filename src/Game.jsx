@@ -10,13 +10,13 @@ import './game.css';
 function Game() {
   const location = useLocation();
   const { theme, difficulty } = location.state || { theme: 'Desert', difficulty: 'Easy' };
-    // State variables
+  
+  // State variables
   const [gameState, setGameState] = useState('preparing'); // preparing, showing, guessing, finished
   const [gameGrid, setGameGrid] = useState([]);
   const [userSelections, setUserSelections] = useState([]);
   const [score, setScore] = useState(0);
   const [blackIndices, setBlackIndices] = useState([]); // Store black squares indices
-  const [flippingCard, setFlippingCard] = useState(null); // Track which card is flipping
   
   const getGridSize = (difficulty) => {
     switch (difficulty) {
@@ -117,6 +117,7 @@ function Game() {
     setupGame();
     // Don't include gameGrid in dependencies to avoid infinite loops
   }, [setupGame]);
+
   // Reset game function
   const resetGame = () => {
     setGameState('preparing');
@@ -124,12 +125,12 @@ function Game() {
     setUserSelections([]);
     setScore(0);
     setBlackIndices([]);
-    setFlippingCard(null);
     // Trigger a new game setup
     setTimeout(() => {
       setupGame();
     }, 100);
   };
+
   // Handle card selection
   const handleCardClick = (id) => {
     if (gameState !== 'guessing') return;
@@ -147,35 +148,25 @@ function Game() {
       return; // Card not found or already selected
     }
     
-    // Start flip animation
-    setFlippingCard(id);
+    // Update the selected card
+    updatedGrid[cardIndex] = {
+      ...updatedGrid[cardIndex],
+      isSelected: true,
+      img: blackSquare // Show as black when selected
+    };
+
+    const updatedSelections = [...userSelections, id];
     
-    // Update the selected card after animation starts
-    setTimeout(() => {
-      updatedGrid[cardIndex] = {
-        ...updatedGrid[cardIndex],
-        isSelected: true,
-        img: blackSquare // Show as black when selected
-      };
+    setGameGrid(updatedGrid);
+    setUserSelections(updatedSelections);
 
-      const updatedSelections = [...userSelections, id];
-      
-      setGameGrid(updatedGrid);
-      setUserSelections(updatedSelections);
-      
-      // Clear flip animation
+    // Check if user has selected enough cards (immediately check)
+    if (updatedSelections.length >= blackIndices.length) {
       setTimeout(() => {
-        setFlippingCard(null);
-      }, 100);
-
-      // Check if user has selected enough cards (immediately check)
-      if (updatedSelections.length >= blackIndices.length) {
-        setTimeout(() => {
-          // Pass the updated selections to checkResults
-          checkResults(updatedSelections);
-        }, 500);
-      }
-    }, 300); // Wait for half the flip animation
+        // Pass the updated selections to checkResults
+        checkResults(updatedSelections);
+      }, 500);
+    }
   };
   
   const checkResults = (selections) => {
@@ -236,7 +227,8 @@ return (
   <div className="game-container">
     {/* Game Board Section - Left Side */}
     <div className="game-board-section">
-      <div className={`game-board grid-${gridSize}`}>        {gameGrid.map((card) => {
+      <div className={`game-board grid-${gridSize}`}>
+        {gameGrid.map((card) => {
           // Determine card classes based on game state
           let cardClasses = 'card';
           
@@ -244,11 +236,6 @@ return (
             cardClasses += ' guessing';
           } else if (gameState !== 'guessing') {
             cardClasses += ' disabled';
-          }
-          
-          // Add flip animation class
-          if (flippingCard === card.id) {
-            cardClasses += ' flip-selected';
           }
           
           if (gameState === 'finished') {
